@@ -20,5 +20,25 @@ app.use(express.json())
 // This is an empty array that will be our pseudo database until we hook up mongo
 const contacts = []
 
+// Below are the routes
+// The pattern is as follows
+// app.<verb>('route', (req, res)=> {})
+
+app.get('/contacts', (req, res) => {
+  res.json(contacts)
+})
+
+// Where we send all of our data
+app.post('/contacts', (req, res) => {
+  let { name, email } = req.body // Destructure name and email off req.body
+  let contact = { name, email } // make contact a variale which holds an object of the name and email
+  contacts.push(contact) // Push the contact to the array
+  res.redirect('/contacts') // Redirect the user to '/contacts' to see the list of cantacts
+})
+
+app.get('/contacts/new', (req, res) => {
+  res.render('contacts/form') // the response is to render the contact form
+})
+
 // This is the code that will turn the web server on
 app.listen(port, () => console.log(`Server listening on port ${port}!`))

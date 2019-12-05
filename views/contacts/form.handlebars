@@ -1,0 +1,15 @@
+{{!-- this is a post method because we are sending data, the action is the route we are posting to --}}
+<form method="post" action="/contacts">
+    <div>
+        <label>Email</label>
+        <input type="email" name="email" />
+    </div>
+    <div>
+        <label>Name</label>
+        <input type="text" name="name" />
+    </div>
+    <div>
+        {{!-- type submit means we will 'execute' the form and send it. value just what is printed on the button --}}
+        <input type="submit" value="Send Contact Form" />
+    </div>
+</form>
